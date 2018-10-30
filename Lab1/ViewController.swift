@@ -17,33 +17,33 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .gray
         print("Hello world!")
+        let bla = NewFile()
         
         setupUI()
     }
     
     private func setupUI() {
+        let appInfo = getVersion()
+        
+        versionLabel.translatesAutoresizingMaskIntoConstraints = false
+        versionLabel.text = appInfo
+        versionLabel.numberOfLines = 0
+        versionLabel.textAlignment = .center
+        
         view.addSubview(versionLabel)
         
         versionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-//        guard let revisionNumber = Bundle.main.releaseVersionNumber else {
-//            return
-//        }
-        let revisionNumber = Bundle.main.releaseVersionNumberPretty
-        versionLabel.translatesAutoresizingMaskIntoConstraints = false
-        versionLabel.text = "Revision number: \(revisionNumber)"
     }
-}
-
-extension Bundle {
-    var releaseVersionNumber: String? {
-        return infoDictionary?["CFBundleShortVersionString"] as? String
-    }
-    var buildVersionNumber: String? {
-        return infoDictionary?["CFBundleVersion"] as? String
-    }
-    var releaseVersionNumberPretty: String {
-        return "v\(releaseVersionNumber ?? "1.0.0")"
+    
+    private func getVersion() -> String {
+        if let dict = Bundle.main.infoDictionary {
+            if let version = dict["CFBundleShortVersionString"] as? String,
+                let bundleVersion = dict["CFBundleVersion"] as? String,
+                let appName = dict["CFBundleName"] as? String {
+                return "You're using \(appName) \nv\(version) (Build \(bundleVersion))."
+            }
+        }
+        return "No version information available!"
     }
 }
