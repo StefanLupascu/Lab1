@@ -17,8 +17,6 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .gray
         print("Hello world!")
-        let bla = NewFile()
-        print(bla.name)
         
         setupUI()
     }
