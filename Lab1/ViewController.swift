@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         versionLabel.text = appInfo
         versionLabel.numberOfLines = 0
         versionLabel.textAlignment = .center
+        versionLabel.font = UIFont.systemFont(ofSize: 16)
         
         view.addSubview(versionLabel)
         
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
             if let version = dict["CFBundleShortVersionString"] as? String,
                 let bundleVersion = dict["CFBundleVersion"] as? String,
                 let appName = dict["CFBundleName"] as? String {
-                return "You're using \(appName) \nv\(version) (Build \(bundleVersion))."
+                return "You're using \(appName) \nv\(version) \n\n(Build: \n\(bundleVersion))."
             }
         }
         return "No version information available!"
