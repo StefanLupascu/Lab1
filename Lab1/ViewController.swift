@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         versionLabel.textAlignment = .center
         versionLabel.font = UIFont.systemFont(ofSize: 16)
         
+        print("hello")
+        
         view.addSubview(versionLabel)
         
         versionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
