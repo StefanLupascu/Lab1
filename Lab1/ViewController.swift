@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .gray
-        print("Hello world!")
+        print("Hello world!!!")
         
         setupUI()
     }
